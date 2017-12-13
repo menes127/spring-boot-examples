@@ -16,17 +16,23 @@ import org.springframework.data.redis.core.RedisTemplate;
 public class RedisConfig {
 	
     @Bean
-    @ConfigurationProperties(prefix = "spring.redis")
+    //@ConfigurationProperties(prefix = "spring.redis")
     JedisConnectionFactory jedisConnectionFactory() {
         return new JedisConnectionFactory();
     }
 
-    @Bean
-    public RedisTemplate<String, Object> redisTemplate() {
-        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
-        template.setConnectionFactory(jedisConnectionFactory());
-        return template;
-    }
+//    @Bean
+//    public RedisTemplate<String, Object> redisTemplate() {
+//        RedisTemplate<String, Object> template = new RedisTemplate<String, Object>();
+//        template.setConnectionFactory(jedisConnectionFactory());
+//        return template;
+//    }
+	@Bean
+	public RedisTemplate<?, ?> redisTemplate() {
+		RedisTemplate<byte[], byte[]> template = new RedisTemplate<byte[], byte[]>();
+		template.setConnectionFactory(jedisConnectionFactory());
+		return template;
+	}
 
     @Bean
     public CacheManager cacheManager() {
