@@ -9,9 +9,3 @@ spring:
       max-active: 600
       max-wait: 1000
     timeout: 0
-
-logging:
-  level:
-    org.springframework.web: ERROR
-  pattern:
-    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
